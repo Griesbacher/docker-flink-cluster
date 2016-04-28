@@ -7,6 +7,10 @@ export MASTER_IP=$MASTER_IP
 export MY_IP=$MY_IP
 if [ `hostname` == "master" ]; then
 	echo "I'm master"
+	if [ -n "$PUPLIC_IP" ]; then
+		sed -i "s/#advertised.host.name.*/advertised.host.name = $PUPLIC_IP/" /usr/local/kafka/config/server.properties
+		echo "using public ip: $PUPLIC_IP"
+	fi
 	/usr/local/kafka/bin/zookeeper-server-start.sh /usr/local/kafka/config/zookeeper.properties &> /tmp/zookeeper.log &
 	/usr/local/kafka/bin/kafka-server-start.sh /usr/local/kafka/config/server.properties &> /tmp/kafka.log &
 else

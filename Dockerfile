@@ -1,10 +1,6 @@
-#docker run --rm -it -p 8081:8081 --name master -h master griesbacher/flink-cluster
-#docker run --rm -it --link master:master -h worker1 --name worker1 griesbacher/flink-cluster
-#Worker:
-#ssh master "nc -l -p 9000"
-#Master:
-#start-cluster.sh
-#flink run /usr/local/flink/examples/streaming/SocketTextStreamWordCount.jar --hostname localhost --port 9000 --output /tmp/run
+#master: docker run --rm -it -p 8081:8081 -p 2181:2181 -p 9092:9092 -e PUPLIC_IP=`docker-machine ip` --name master -h master griesbacher/flink-cluster
+#worker: docker run --rm -it --link master:master -h worker1 --name worker1 griesbacher/flink-cluster
+#@master: start-cluster.sh
 
 FROM debian:8
 
