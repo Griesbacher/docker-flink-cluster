@@ -1,4 +1,4 @@
-#master: docker run --rm -it -p 8081:8081 -p 2181:2181 -p 9092:9092 -e PUPLIC_IP=`docker-machine ip` --name master -h master griesbacher/flink-cluster
+#master: docker run --rm -it -p 8081:8081 -p 2181:2181 -p 9092:9092 -e PUBLIC_IP=`docker-machine ip` --name master -h master griesbacher/flink-cluster
 #worker: docker run --rm -it --link master:master -h worker1 --name worker1 griesbacher/flink-cluster
 #@master: start-cluster.sh
 
