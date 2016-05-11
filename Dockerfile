@@ -29,6 +29,6 @@ ENV PATH=$PATH:/usr/local/kafka/bin
 COPY ./entrypoint.sh /entrypoint.sh
 RUN sed -i 's/\r//' /entrypoint.sh #Just for Windowssystems...
 
-EXPOSE 22 2181 6123 8081 9092
+EXPOSE 22 2181 8081 9092
 
 ENTRYPOINT ["/entrypoint.sh"]
