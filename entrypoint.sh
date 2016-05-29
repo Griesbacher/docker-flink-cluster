@@ -9,6 +9,7 @@ if [ `hostname` == "master" ]; then
 	echo "I'm master"
 	if [ -n "$PUBLIC_IP" ]; then
 		sed -i "s/#advertised.host.name.*/advertised.host.name = $PUBLIC_IP/" /usr/local/kafka/config/server.properties
+		echo "delete.topic.enable=true" >> /usr/local/kafka/config/server.properties
 		echo "using public ip: $PUBLIC_IP"
 	fi
 	/usr/local/kafka/bin/zookeeper-server-start.sh /usr/local/kafka/config/zookeeper.properties &> /tmp/zookeeper.log &
